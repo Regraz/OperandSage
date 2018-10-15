@@ -5,7 +5,7 @@ BitAccuracy = {'32','12','11','10','9'};
 conv2d_op_mult_hitrate_layerwise=magic(5);
 conv2d_op_add_hitrate_layerwise=magic(5);
 
-for i=1:5
+for i=2:5
 
 %Read operands BIN database
 
@@ -47,11 +47,11 @@ if i~=1
     end
 end
 
-conv2d_op_add=[conv2d_op_add1; conv2d_op_add2; conv2d_op_add3];
+%conv2d_op_add=[conv2d_op_add1; conv2d_op_add2; conv2d_op_add3];
 [conv2d_op_add1_hitnum,conv2d_op_add1_oprnum,conv2d_op_add1_hitrate,conv2d_op_add1_freqpatterns]=profilegen(operandhist(conv2d_op_add1),Storage(1,j));
 [conv2d_op_add2_hitnum,conv2d_op_add2_oprnum,conv2d_op_add2_hitrate,conv2d_op_add2_freqpatterns]=profilegen(operandhist(conv2d_op_add2),Storage(1,j));
 [conv2d_op_add3_hitnum,conv2d_op_add3_oprnum,conv2d_op_add3_hitrate,conv2d_op_add3_freqpatterns]=profilegen(operandhist(conv2d_op_add3),Storage(1,j));
-[conv2d_op_add_hitnum,conv2d_op_add_oprnum,conv2d_op_add_hitrate,conv2d_op_add_freqpatterns]=profilegen(operandhist(conv2d_op_add),Storage(1,j));
+%[conv2d_op_add_hitnum,conv2d_op_add_oprnum,conv2d_op_add_hitrate,conv2d_op_add_freqpatterns]=profilegen(operandhist(conv2d_op_add),Storage(1,j));
 
 %Multiply Operands
 
@@ -84,14 +84,14 @@ for cnt=1:size(conv2d_op_mult3_bin,1)
 end
 end
 
-conv2d_op_mult=[conv2d_op_mult1; conv2d_op_mult2; conv2d_op_mult3];
+%conv2d_op_mult=[conv2d_op_mult1; conv2d_op_mult2; conv2d_op_mult3];
 [conv2d_op_mult1_hitnum,conv2d_op_mult1_oprnum,conv2d_op_mult1_hitrate,conv2d_op_mult1_freqpatterns]=profilegen(operandhist(conv2d_op_mult1),Storage(1,j));
 [conv2d_op_mult2_hitnum,conv2d_op_mult2_oprnum,conv2d_op_mult2_hitrate,conv2d_op_mult2_freqpatterns]=profilegen(operandhist(conv2d_op_mult2),Storage(1,j));
 [conv2d_op_mult3_hitnum,conv2d_op_mult3_oprnum,conv2d_op_mult3_hitrate,conv2d_op_mult3_freqpatterns]=profilegen(operandhist(conv2d_op_mult3),Storage(1,j));
-[conv2d_op_mult_hitnum,conv2d_op_mult_oprnum,conv2d_op_mult_hitrate,conv2d_op_mult_freqpatterns]=profilegen(operandhist(conv2d_op_mult),Storage(1,j));
+%[conv2d_op_mult_hitnum,conv2d_op_mult_oprnum,conv2d_op_mult_hitrate,conv2d_op_mult_freqpatterns]=profilegen(operandhist(conv2d_op_mult),Storage(1,j));
 
-conv2d_op_mult_hitrate_layerwise(j,i)=(conv2d_op_mult1_hitnum+conv2d_op_mult2_hitnum+conv2d_op_mult3_hitnum)/conv2d_op_mult_oprnum;
-conv2d_op_add_hitrate_layerwise(j,i)=(conv2d_op_add1_hitnum+conv2d_op_add2_hitnum+conv2d_op_add3_hitnum)/conv2d_op_add_oprnum;
+%conv2d_op_mult_hitrate_layerwise(j,i)=(conv2d_op_mult1_hitnum+conv2d_op_mult2_hitnum+conv2d_op_mult3_hitnum)/conv2d_op_mult_oprnum;
+%conv2d_op_add_hitrate_layerwise(j,i)=(conv2d_op_add1_hitnum+conv2d_op_add2_hitnum+conv2d_op_add3_hitnum)/conv2d_op_add_oprnum;
 
 if (j==1 && i~=1)
     freq_pattern_out(conv2d_op_mult1_freqpatterns,'D:\tiny_dnn\tiny_dnn\operands\Frequent Patterns\conv2d_op_mult1_freqpatterns.txt',str2num(BitAccuracy{1,i}),1);
