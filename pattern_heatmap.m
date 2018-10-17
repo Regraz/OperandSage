@@ -1,6 +1,6 @@
 %Draw 1-D heatmap of operands. 
-%function [selected_operands] = pattern_heatmap(pattern, count)
-function [selected_operands] = pattern_heatmap(filepath, count)
+%function [selected_operands] = pattern_heatmap(pattern, count, xlabel, ylabel, title, rangecnt)
+function [selected_operands] = pattern_heatmap(filepath, count, x_axis_label, y_axis_label, hmap_title, rangecnt)
 format long;
 pattern_str=textread(filepath,'%s');
 pattern=ones(size(pattern_str,1),1);
@@ -16,7 +16,7 @@ for i=1:count
     selected_operands(i)=pattern(step*i+floor(step*rand));
 end
 
-% hold on;
+
 % subplot(2,2,1);
 % hist(selected_operands,100);
 % xlabel("Range of Operands (Float) / Range Length: 0.02");
@@ -35,9 +35,14 @@ end
 % ylabel("Number of Operands in Each Range")
 % title("Distribution of 2000 Randomly Selected Multiply Operands, Layer 2");
 
-subplot(2,2,4);
-hist(selected_operands,100);
-xlabel("Range of Operands (Float) / Range Length: 0.02");
-ylabel("Number of Operands in Each Range")
-title("Distribution of 2000 Randomly Selected Multiply Operands, Layer 3");
+% subplot(2,2,4);
+% hist(selected_operands,100);
+% xlabel("Range of Operands (Float) / Range Length: 0.02");
+% ylabel("Number of Operands in Each Range")
+% title("Distribution of 2000 Randomly Selected Multiply Operands, Layer 3");
+
+hist(selected_operands,rangecnt);
+xlabel(x_axis_label);
+ylabel(y_axis_label)
+title(hmap_title);
 
